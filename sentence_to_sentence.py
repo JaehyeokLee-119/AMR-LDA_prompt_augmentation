@@ -16,10 +16,10 @@ dataframe_list_single_sentences = []
 
 
 class SentenceManipulator:
-    def __init__(self):
+    def __init__(self, model_path="/hdd/hjl8708/workspace/AMR-LDA/Refactoried/pretrained_models"):
         # sentence -> graph 모델 로드
-        self.stog = amrlib.load_stog_model("/hdd/hjl8708/workspace/AMR-LDA/Refactoried/pretrained_models/model_parse_xfm_bart_large-v0_1_0")
-        self.gtos = amrlib.load_gtos_model("/hdd/hjl8708/workspace/AMR-LDA/Refactoried/pretrained_models/model_generate_t5wtense-v0_1_0")
+        self.stog = amrlib.load_stog_model(f"{model_path}/model_parse_xfm_bart_large-v0_1_0")
+        self.gtos = amrlib.load_gtos_model(f"{model_path}/model_generate_t5wtense-v0_1_0")
         
     def manipulate(self, sentence):
         sentence_list = [sentence]

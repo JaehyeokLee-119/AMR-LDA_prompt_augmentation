@@ -13,6 +13,9 @@ def split_text_into_sentences_with_punctuation(text):
     # 결과에 구두점을 포함시킴
     sentences = re.findall(r'[^.!?]+[.!?]', text)
     sentences = [s.strip() for s in sentences]
+    
+    if len(sentences) == 0:
+        sentences = [text]
     return sentences
 
 def augment(text):
@@ -21,24 +24,20 @@ def augment(text):
     
     sentences = split_text_into_sentences_with_punctuation(text)    
     
-    ''' 
-    text = "In rheumatoid arthritis, the body' s immune system misfunctions by attacking healthy cells in the joints causing the release of a hormone that in turn causes pain and swelling. This hormone is normally activated only in reaction to injury or infection. A new arthritis medication will contain a protein that inhibits the functioning of the hormone that causes pain and swelling in the joints."
-    
-    sentences = [
-        "In rheumatoid arthritis, the body' s immune system misfunctions by attacking healthy cells in the joints causing the release of a hormone that in turn causes pain and swelling",
-        ' This hormone is normally activated only in reaction to injury or infection',
-        ' A new arthritis medication will contain a protein that inhibits the functioning of the hormone that causes pain and swelling in the joints'
-    ]    
-    '''
-    
     augmented_sentences = []
     for sentence in sentences:
         augmented_sentence, counts = SentenceManipulator.manipulate(sentence)
         augmented_sentences.append(augmented_sentence)
     
+    
+    # augmented_sentences 이중배열 풀기
+    augmented_sentences = [augmented_sentence[0] for augmented_sentence in augmented_sentences if len(augmented_sentence)!=0]
+    
     result_text = ''
     for augmented_sentence in augmented_sentences:
-        result_text += ' '.join(augmented_sentence)
+        result_text += f'{augmented_sentence[0]} '
+    
+    result_text = result_text.strip()
     
     return result_text, counts
 
@@ -82,6 +81,7 @@ def process_row(row):
     
 def process_whole(
     data_name = "RULE_mainq",
+    model_path = "/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/pretrained_models",
     data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/data/RULE/RULE_mainq.jsonl",
     result_data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/result/RULE_mainq_AMR-LDA.jsonl",
     augmentation = "AMR-LDA",
@@ -91,7 +91,7 @@ def process_whole(
     
     new_data = []
     global SentenceManipulator
-    SentenceManipulator = sts.SentenceManipulator()
+    SentenceManipulator = sts.SentenceManipulator(model_path)
         # sentence -> manipulate() -> sentence list
     
     with open(data_path, "r") as f:
