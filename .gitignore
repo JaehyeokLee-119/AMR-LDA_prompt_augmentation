@@ -1,0 +1,5 @@
+pretrained_models/*
+
+output_result/*
+
+__pycache__
