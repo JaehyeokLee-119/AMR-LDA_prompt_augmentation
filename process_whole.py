@@ -41,6 +41,7 @@ def augment(text):
         result_text += ' '.join(augmented_sentence)
     
     return result_text, counts
+
 def process_rows(rows):
     # 여러 row를 배치로 한번에 처리하도록 하기 (속도가 너무 느리다 지금은)
     pass 
@@ -84,8 +85,9 @@ def process_row(row):
     return new_row
     
 def process_whole(
-    data_path = "/hdd/hjl8708/workspace/Data/RULE/Trainable_ReClor.jsonl",
-    result_data_path = "/hdd/hjl8708/workspace/AMR-LDA/Refactoried/result/Trainable_ReClor_AMR-LDA.jsonl",
+    data_name = "RULE_mainq",
+    data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/data/RULE/RULE_mainq.jsonl",
+    result_data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/result/RULE_mainq_AMR-LDA.jsonl",
     augmentation = "AMR-LDA",
 ):
     # logger warning 무시
@@ -98,8 +100,6 @@ def process_whole(
     
     with open(data_path, "r") as f:
         data = f.readlines()
-    
-    data = data[:10]   
     
     for line in tqdm(data):
         row = json.loads(line)
