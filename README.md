@@ -1,5 +1,8 @@
 # AMR-LDA_prompt_augmentation
 
+## Abstract
+This Repository is for experiments logical prompt augmentation with AMR-LDA. These codes generate logically equivalent sentences for each sentence in context and answer options from ReClor (and RULE) problems.
+
 ## Requirements
 1. make pretrained_models folder
 2. download model_generate_t5wtense-v0_1_0 and model_parse_xfm_bart_large-v0_1_0 from https://github.com/bjascob/amrlib-models to ./pretrained_models 
