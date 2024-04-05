@@ -42,10 +42,6 @@ def augment(text):
     
     return result_text, counts
 
-def process_rows(rows):
-    # 여러 row를 배치로 한번에 처리하도록 하기 (속도가 너무 느리다 지금은)
-    pass 
-
 def process_row(row):
     id_string = row['id_string']
     data_name = row['data_name']
