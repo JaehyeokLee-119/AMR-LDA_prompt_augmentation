@@ -1,7 +1,7 @@
 # AMR-LDA_prompt_augmentation
 
 ## Abstract
-This Repository is for experiments logical prompt augmentation with AMR-LDA. These codes generate logically equivalent sentences for each sentence in context and answer options from ReClor (and RULE) problems.
+This Repository is for experimenting logical prompt augmentation with AMR-LDA. The codes generates logically equivalent sentences for sentences in context and answer options of [ReClor](https://whyu.me/reclor/) (and [RULE](https://github.com/nii-cl/rule)) questions.
 
 ## Requirements
 1. make pretrained_models folder
@@ -43,3 +43,7 @@ output: augmented 데이터셋
 3. (text_augmentation) 전체 과정을 바탕으로 EC-finetuning의 format에 맞게 변경해서 바로 inference할 수 있게 만듦
 
 4. (original_to_option) augmented original을 바탕으로 YES/NO 문제를 생성함
+
+## Acknowledgements
+
+This repo is built upon [Logical-Equivalence-driven-AMR-Data-Augmentation-for-Representation-Learning](https://github.com/Strong-AI-Lab/Logical-Equivalence-driven-AMR-Data-Augmentation-for-Representation-Learning).
