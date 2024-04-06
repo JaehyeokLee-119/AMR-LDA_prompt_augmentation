@@ -35,7 +35,7 @@ def augment(text):
     
     result_text = ''
     for augmented_sentence in augmented_sentences:
-        result_text += f'{augmented_sentence[0]} '
+        result_text += f'{augmented_sentence} '
     
     result_text = result_text.strip()
     

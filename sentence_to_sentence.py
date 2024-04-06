@@ -59,8 +59,8 @@ class SentenceManipulator:
         
         generated_sentences = gtos.generate(manipulated_graph_lists_positive)
         
-        if True not in counts_for_types:
-            print("what happened?")
+        # if True not in counts_for_types:
+        #     print("what happened?")
         return generated_sentences[0], counts_for_types
     
     def test(self):
