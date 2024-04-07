@@ -1,12 +1,15 @@
 
 import os 
-os.environ['CUDA_VISIBLE_DEVICES'] = '0'
+os.environ['CUDA_VISIBLE_DEVICES'] = '2'
 import json 
 import fire
 import sentence_to_sentence as sts
 from tqdm import tqdm
 import re
 import logging
+import nltk
+nltk.download('wordnet')
+
 
 def split_text_into_sentences_with_punctuation(text):
     # 정규 표현식을 사용하여 마침표, 물음표, 느낌표로 끝나는 문장을 찾아 분리
@@ -81,9 +84,9 @@ def process_row(row):
     
 def process_whole(
     data_name = "RULE_mainq",
-    model_path = "/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/pretrained_models",
-    data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/data/RULE/RULE_mainq.jsonl",
-    result_data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/result/RULE_mainq_AMR-LDA.jsonl",
+    model_path = "/hdd/hjl8708/workspace/AMR-LDA//AMR-LDA_prompt_augmentation/pretrained_models",
+    data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/data/RULE/Trainable_ReClor.jsonl",
+    result_data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/result/Trainable_ReClor_AMR-LDA_300.jsonl",
     augmentation = "AMR-LDA",
 ):
     # logger warning 무시
@@ -96,6 +99,12 @@ def process_whole(
     
     with open(data_path, "r") as f:
         data = f.readlines()
+    
+    # data를 shuffle
+    import random
+    random.shuffle(data)
+    data = data[:250]
+    
     
     for line in tqdm(data):
         row = json.loads(line)

@@ -1,6 +1,5 @@
 import amrlib
 from amrlib.models.parse_xfm.inference import Inference
-import penman
 import json
 import pandas as pd
 # import t5.evaluation.metrics as t5

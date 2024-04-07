@@ -6,8 +6,10 @@ This Repository is for experimenting logical prompt augmentation with AMR-LDA. T
 ## Requirements
 1. make pretrained_models folder
 2. download model_generate_t5wtense-v0_1_0 and model_parse_xfm_bart_large-v0_1_0 from https://github.com/bjascob/amrlib-models to ./pretrained_models 
-<br> (wget https://github.com/bjascob/amrlib-models/releases/download/parse_xfm_bart_large-v0_1_0/model_parse_xfm_bart_large-v0_1_0.tar.gz)
-<br> (wget https://github.com/bjascob/amrlib-models/releases/download/model_generate_t5wtense-v0_1_0/model_generate_t5wtense-v0_1_0.tar.gz)
+<br> wget https://github.com/bjascob/amrlib-models/releases/download/parse_xfm_bart_large-v0_1_0/model_parse_xfm_bart_large-v0_1_0.tar.gz
+<br> wget https://github.com/bjascob/amrlib-models/releases/download/model_generate_t5wtense-v0_1_0/model_generate_t5wtense-v0_1_0.tar.gz
+<br> tar -xvzf model_generate_t5wtense-v0_1_0.tar.gz
+<br> tar -xvzf model_parse_xfm_bart_large-v0_1_0.tar.gz
 2. unzip them
 
 ## Temp
