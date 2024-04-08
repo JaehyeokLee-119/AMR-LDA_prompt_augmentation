@@ -55,8 +55,6 @@ class SentenceManipulator:
 
         counts_for_types = [len(double_negation_list)>0, len(contraposition_list)>0, len(commutative_list)>0, len(implication_list)>0]
         
-        
-        
         generated_sentences = gtos.generate(manipulated_graph_lists_positive)
         
         # if True not in counts_for_types:
