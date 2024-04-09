@@ -10,12 +10,17 @@ import logging
 import nltk
 nltk.download('wordnet')
 
+def sentence_preprocess(sentence):
+    sentence = sentence.strip()
+    sentence = sentence.replace('\n', ' ')
+    return sentence
 
 def split_text_into_sentences_with_punctuation(text):
     # 정규 표현식을 사용하여 마침표, 물음표, 느낌표로 끝나는 문장을 찾아 분리
     # 결과에 구두점을 포함시킴
     sentences = re.findall(r'[^.!?]+[.!?]', text)
-    sentences = [s.strip() for s in sentences]
+    sentences = [sentence_preprocess(s) for s in sentences]
+    
     
     if len(sentences) == 0:
         sentences = [text]
@@ -105,10 +110,10 @@ def process_whole(
         new_row = process_row(row)
         new_data.append(new_row)
     
-    # jsonl로 저장
-    with open(result_data_path, "w") as f:
-        for new_row in new_data:
-            f.write(json.dumps(new_row) + '\n')
+        # jsonl로 저장
+        with open(result_data_path, "w") as f:
+            for new_row in new_data:
+                f.write(json.dumps(new_row) + '\n')
 
 if __name__ == '__main__':
     # conda activate amrlda
