@@ -90,8 +90,8 @@ def process_row(row):
 def process_whole(
     data_name = "RULE_mainq",
     model_path = "/hdd/hjl8708/workspace/AMR-LDA//AMR-LDA_prompt_augmentation/pretrained_models",
-    data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/data/RULE/RULE_subq_all.jsonl",
-    result_data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/result/RULE_subq_all-AMR_LDA.jsonl",
+    data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/data/RULE/Trainable_ReClor.jsonl",
+    result_data_path = f"/hdd/hjl8708/workspace/AMR-LDA/AMR-LDA_prompt_augmentation/result/Trainable_ReClor-AMR_LDA.jsonl",
     augmentation = "AMR-LDA",
 ):
     # logger warning 무시
